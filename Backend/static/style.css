@@ -1,1 +1,107 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7f6;
+    direction: rtl;
+}
 
+
+.container {
+    width: 90%;
+    max-width: 650px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+
+h1 {
+    margin-bottom: 5px;
+}
+
+
+.subtitle {
+    color: #666;
+    margin-top: 0;
+}
+
+
+.person {
+    margin-top: 35px;
+}
+
+
+.avatar {
+    width: 100px;
+    height: 100px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #dfe9e5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+}
+
+
+#conversation {
+    margin-top: 30px;
+    text-align: right;
+}
+
+
+.adam-message,
+.user-message {
+
+    padding: 15px 18px;
+
+    border-radius: 15px;
+
+    margin: 12px 0;
+
+    line-height: 1.7;
+}
+
+
+.adam-message {
+    background: white;
+}
+
+
+.user-message {
+    background: #dfe9e5;
+}
+
+
+#micButton {
+
+    margin-top: 30px;
+
+    border: none;
+
+    padding: 18px 30px;
+
+    border-radius: 30px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    background: #173b34;
+    color: white;
+}
+
+
+#micButton.recording {
+    background: #9e3333;
+}
+
+
+#status {
+    color: #777;
+    min-height: 25px;
+}
