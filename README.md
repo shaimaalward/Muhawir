@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="backend/static/assets/muhawir-logo.png" alt="Muhawir Logo" width="220">
+</p>
+
 # Muhawir | محاور
 
 **Muhawir** is an AI-powered Islamic dialogue training platform. It lets a learner practice explaining Islamic concepts in a natural conversation, then evaluates the learner's answers against an approved knowledge base and provides evidence-grounded coaching.
