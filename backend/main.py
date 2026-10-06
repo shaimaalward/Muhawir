@@ -30,7 +30,8 @@ from session_store import SessionStore
 
 if not config.OPENAI_API_KEY:
     raise RuntimeError(
-        "OPENAI_API_KEY is missing. Create backend/.env from .env.example."
+        "OPENAI_API_KEY is missing. "
+        "Set OPENAI_API_KEY in the deployment environment."
     )
 
 
@@ -115,6 +116,7 @@ evaluation_service = EvaluationService(
 def _normalize_persona_id(
     persona_id: str | None,
 ) -> str:
+
     value = (
         persona_id or "adam"
     ).strip().lower()
@@ -131,6 +133,7 @@ def _normalize_persona_id(
 def _persona_name(
     persona_id: str,
 ) -> str:
+
     if persona_id == "maya":
         return "مايا"
 
@@ -140,6 +143,7 @@ def _persona_name(
 def _persona_prompt(
     persona_id: str,
 ) -> str:
+
     if persona_id == "maya":
         return maya_prompt
 
@@ -150,14 +154,6 @@ def _persona_instructions(
     persona_id: str,
     topic_title: str | None,
 ) -> str:
-    """
-    Combine the persona's permanent prompt with
-    the selected training topic.
-
-    The persona should know which topic the trainee
-    selected without receiving religious answers
-    from the application itself.
-    """
 
     prompt = _persona_prompt(
         persona_id
@@ -198,10 +194,6 @@ Continue naturally from the existing conversation.
 def _persona_voice(
     persona_id: str,
 ) -> str:
-    """
-    Adam keeps the existing configured voice.
-    Maya uses a separate voice.
-    """
 
     if persona_id == "maya":
         return "coral"
@@ -291,6 +283,123 @@ Do not sound robotic or overly formal.
 
 
 # =========================================================
+# AUDIO HELPERS
+# =========================================================
+
+def _detect_audio_extension(
+    audio_bytes: bytes,
+    filename: str | None,
+    content_type: str | None,
+) -> str:
+    """
+    Determine the actual audio format as reliably as possible.
+
+    This is important in browsers because MediaRecorder may create
+    WebM, MP4, OGG, WAV, or MP3 depending on the browser/device.
+    """
+
+    # -----------------------------------------------------
+    # Detect using the actual file bytes first
+    # -----------------------------------------------------
+
+    if len(audio_bytes) >= 12:
+
+        # WAV
+        if (
+            audio_bytes[:4] == b"RIFF"
+            and audio_bytes[8:12] == b"WAVE"
+        ):
+            return ".wav"
+
+        # OGG
+        if audio_bytes[:4] == b"OggS":
+            return ".ogg"
+
+        # MP4 / M4A
+        if audio_bytes[4:8] == b"ftyp":
+            return ".mp4"
+
+        # WebM / Matroska
+        if audio_bytes[:4] == b"\x1a\x45\xdf\xa3":
+            return ".webm"
+
+        # MP3 with ID3
+        if audio_bytes[:3] == b"ID3":
+            return ".mp3"
+
+        # MP3 frame
+        if (
+            audio_bytes[0] == 0xFF
+            and (audio_bytes[1] & 0xE0) == 0xE0
+        ):
+            return ".mp3"
+
+    # -----------------------------------------------------
+    # Fall back to browser MIME type
+    # -----------------------------------------------------
+
+    mime = (
+        content_type or ""
+    ).lower()
+
+    if "webm" in mime:
+        return ".webm"
+
+    if "ogg" in mime:
+        return ".ogg"
+
+    if "wav" in mime:
+        return ".wav"
+
+    if "mp4" in mime:
+        return ".mp4"
+
+    if "m4a" in mime:
+        return ".m4a"
+
+    if "mpeg" in mime or "mp3" in mime:
+        return ".mp3"
+
+    # -----------------------------------------------------
+    # Fall back to filename
+    # -----------------------------------------------------
+
+    if filename:
+        extension = Path(
+            filename
+        ).suffix.lower()
+
+        if extension in {
+            ".webm",
+            ".wav",
+            ".mp3",
+            ".mp4",
+            ".m4a",
+            ".ogg",
+            ".mpeg",
+            ".mpga",
+        }:
+            return extension
+
+    # Browser default
+    return ".webm"
+
+
+def _voice_metrics_payload(
+    voice_metrics,
+) -> dict:
+
+    if voice_metrics is None:
+        return {}
+
+    try:
+        return voice_metrics.model_dump()
+
+    except Exception:
+        return {}
+
+
+# =========================================================
 # OPENAI CONVERSATION
 # =========================================================
 
@@ -335,17 +444,18 @@ async def talk(
     temp_path: str | None = None
 
     try:
-        # -------------------------------------------------
-        # Normalize selected persona
-        # -------------------------------------------------
+
+        # =================================================
+        # PERSONA
+        # =================================================
 
         persona_id = _normalize_persona_id(
             persona_id
         )
 
-        # -------------------------------------------------
-        # Save session context
-        # -------------------------------------------------
+        # =================================================
+        # SESSION CONTEXT
+        # =================================================
 
         sessions.set_context(
             session_id,
@@ -354,15 +464,9 @@ async def talk(
             topic_title=topic_title,
         )
 
-        # -------------------------------------------------
-        # Save the opening question once
-        #
-        # The frontend already displays the persona's
-        # opening question before the trainee speaks.
-        #
-        # Previously this opening existed only in the UI.
-        # Now the backend session also knows about it.
-        # -------------------------------------------------
+        # =================================================
+        # SAVE OPENING QUESTION ONCE
+        # =================================================
 
         existing_turns = sessions.get(
             session_id
@@ -378,22 +482,36 @@ async def talk(
                 opening.strip(),
             )
 
-        # -------------------------------------------------
-        # Read uploaded audio
-        # -------------------------------------------------
+        # =================================================
+        # READ UPLOADED AUDIO
+        # =================================================
 
         audio_bytes = await audio.read()
 
-        original_filename = (
-            audio.filename
-            or "recording.webm"
+        if not audio_bytes:
+            raise HTTPException(
+                status_code=422,
+                detail="The uploaded audio recording is empty.",
+            )
+
+        print(
+            "AUDIO RECEIVED:",
+            f"bytes={len(audio_bytes)}",
+            f"filename={audio.filename}",
+            f"content_type={audio.content_type}",
+            flush=True,
         )
 
-        extension = (
-            os.path.splitext(
-                original_filename
-            )[1]
-            or ".webm"
+        extension = _detect_audio_extension(
+            audio_bytes=audio_bytes,
+            filename=audio.filename,
+            content_type=audio.content_type,
+        )
+
+        print(
+            "AUDIO FORMAT:",
+            extension,
+            flush=True,
         )
 
         with tempfile.NamedTemporaryFile(
@@ -405,116 +523,285 @@ async def talk(
                 audio_bytes
             )
 
+            temp_audio.flush()
+
             temp_path = (
                 temp_audio.name
             )
+
+        print(
+            "TEMP AUDIO:",
+            temp_path,
+            flush=True,
+        )
 
         # =================================================
         # 1. SPEECH -> TEXT
         # =================================================
 
-        with open(
-            temp_path,
-            "rb",
-        ) as audio_file:
+        try:
 
-            transcription = (
-                client.audio.transcriptions.create(
-                    model=config.TRANSCRIPTION_MODEL,
-                    file=audio_file,
-                    language="ar",
-                )
+            print(
+                "TRANSCRIPTION STARTING...",
+                flush=True,
             )
 
-        user_text = (
-            transcription.text.strip()
-        )
+            with open(
+                temp_path,
+                "rb",
+            ) as audio_file:
+
+                transcription = (
+                    client.audio.transcriptions.create(
+                        model=config.TRANSCRIPTION_MODEL,
+                        file=audio_file,
+                        language="ar",
+                    )
+                )
+
+            user_text = (
+                transcription.text or ""
+            ).strip()
+
+            print(
+                "TRANSCRIPTION SUCCESS:",
+                user_text,
+                flush=True,
+            )
+
+        except Exception as exc:
+
+            print(
+                "TRANSCRIPTION ERROR:",
+                type(exc).__name__,
+                repr(exc),
+                flush=True,
+            )
+
+            raise HTTPException(
+                status_code=500,
+                detail=(
+                    "Transcription failed: "
+                    f"{type(exc).__name__}: {str(exc)}"
+                ),
+            ) from exc
 
         if not user_text:
             raise HTTPException(
                 status_code=422,
-                detail=(
-                    "No speech was transcribed."
-                ),
+                detail="No speech was transcribed.",
             )
 
         # =================================================
         # 2. VOICE DELIVERY ANALYSIS
+        #
+        # IMPORTANT:
+        # Voice analysis is useful for evaluation, but it
+        # must NEVER stop the actual conversation.
+        #
+        # If FFmpeg / audio decoding / librosa behaves
+        # differently on the server, we skip this metric
+        # rather than returning HTTP 500.
         # =================================================
 
-        voice_metrics = analyze_voice(
-            temp_path,
-            user_text,
-        )
+        voice_metrics = None
 
-        sessions.add_trainee(
-            session_id,
-            user_text,
-            voice_metrics,
-        )
+        try:
+
+            print(
+                "VOICE ANALYSIS STARTING...",
+                flush=True,
+            )
+
+            voice_metrics = analyze_voice(
+                temp_path,
+                user_text,
+            )
+
+            print(
+                "VOICE ANALYSIS SUCCESS",
+                flush=True,
+            )
+
+        except Exception as exc:
+
+            print(
+                "VOICE ANALYSIS SKIPPED:",
+                type(exc).__name__,
+                repr(exc),
+                flush=True,
+            )
+
+            voice_metrics = None
+
+        # =================================================
+        # SAVE TRAINEE TURN
+        # =================================================
+
+        try:
+
+            sessions.add_trainee(
+                session_id,
+                user_text,
+                voice_metrics,
+            )
+
+        except Exception as first_exc:
+
+            # Some SessionStore implementations may allow
+            # a trainee turn without voice metrics.
+
+            print(
+                "SESSION VOICE METRICS FALLBACK:",
+                repr(first_exc),
+                flush=True,
+            )
+
+            try:
+
+                sessions.add_trainee(
+                    session_id,
+                    user_text,
+                )
+
+            except TypeError:
+
+                # If the method requires the third argument,
+                # try explicitly passing None.
+
+                sessions.add_trainee(
+                    session_id,
+                    user_text,
+                    None,
+                )
 
         # =================================================
         # 3. PERSONA RESPONSE
         # =================================================
 
-        response = client.responses.create(
-            model=config.ADAM_MODEL,
-            instructions=_persona_instructions(
-                persona_id,
-                topic_title,
-            ),
-            input=_openai_conversation(
-                session_id
-            ),
-        )
+        try:
 
-        persona_text = (
-            response.output_text.strip()
-        )
+            print(
+                "PERSONA RESPONSE STARTING...",
+                flush=True,
+            )
 
-        # We keep using add_adam internally because the
-        # evaluator treats this as the conversation-partner
-        # side of the dialogue.
+            response = client.responses.create(
+                model=config.ADAM_MODEL,
+                instructions=_persona_instructions(
+                    persona_id,
+                    topic_title,
+                ),
+                input=_openai_conversation(
+                    session_id
+                ),
+            )
+
+            persona_text = (
+                response.output_text or ""
+            ).strip()
+
+            if not persona_text:
+                raise RuntimeError(
+                    "OpenAI returned an empty persona response."
+                )
+
+            print(
+                "PERSONA RESPONSE SUCCESS:",
+                persona_text,
+                flush=True,
+            )
+
+        except Exception as exc:
+
+            print(
+                "PERSONA RESPONSE ERROR:",
+                type(exc).__name__,
+                repr(exc),
+                flush=True,
+            )
+
+            raise HTTPException(
+                status_code=500,
+                detail=(
+                    "Persona response failed: "
+                    f"{type(exc).__name__}: {str(exc)}"
+                ),
+            ) from exc
+
+        # =================================================
+        # SAVE PERSONA TURN
+        # =================================================
+
         sessions.add_adam(
             session_id,
             persona_text,
         )
 
         # =================================================
-        # 4. PERSONA VOICE
+        # 4. PERSONA TEXT -> SPEECH
+        #
+        # TTS should also not destroy the whole conversation
+        # if the audio generation fails.
         # =================================================
 
-        speech_response = (
-            client.audio.speech.create(
-                model=config.TTS_MODEL,
-                voice=_persona_voice(
-                    persona_id
-                ),
-                input=persona_text,
-                instructions=(
-                    _persona_tts_instructions(
-                        persona_id
-                    )
-                ),
-            )
-        )
+        persona_audio_base64 = ""
 
-        persona_audio_base64 = (
-            base64.b64encode(
-                speech_response.read()
-            ).decode(
-                "utf-8"
+        try:
+
+            print(
+                "TTS STARTING...",
+                flush=True,
             )
-        )
+
+            speech_response = (
+                client.audio.speech.create(
+                    model=config.TTS_MODEL,
+                    voice=_persona_voice(
+                        persona_id
+                    ),
+                    input=persona_text,
+                    instructions=(
+                        _persona_tts_instructions(
+                            persona_id
+                        )
+                    ),
+                )
+            )
+
+            speech_bytes = (
+                speech_response.read()
+            )
+
+            persona_audio_base64 = (
+                base64.b64encode(
+                    speech_bytes
+                ).decode(
+                    "utf-8"
+                )
+            )
+
+            print(
+                "TTS SUCCESS",
+                flush=True,
+            )
+
+        except Exception as exc:
+
+            print(
+                "TTS ERROR - CONTINUING WITHOUT AUDIO:",
+                type(exc).__name__,
+                repr(exc),
+                flush=True,
+            )
+
+            persona_audio_base64 = ""
 
         # =================================================
         # RESPONSE TO FRONTEND
         #
-        # adam_text and adam_audio are intentionally kept
-        # for compatibility with the existing app.js.
-        #
-        # They contain Maya's response/audio when Maya
-        # is selected.
+        # adam_text / adam_audio names are intentionally
+        # preserved because app.js already expects them.
         # =================================================
 
         return {
@@ -537,11 +824,34 @@ async def talk(
             ),
 
             "voice_metrics": (
-                voice_metrics.model_dump()
+                _voice_metrics_payload(
+                    voice_metrics
+                )
             ),
         }
 
+    except HTTPException:
+        raise
+
+    except Exception as exc:
+
+        print(
+            "UNEXPECTED TALK ERROR:",
+            type(exc).__name__,
+            repr(exc),
+            flush=True,
+        )
+
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                "Talk request failed: "
+                f"{type(exc).__name__}: {str(exc)}"
+            ),
+        ) from exc
+
     finally:
+
         if (
             temp_path
             and os.path.exists(
@@ -549,6 +859,7 @@ async def talk(
             )
         ):
             try:
+
                 os.remove(
                     temp_path
                 )
@@ -573,9 +884,10 @@ async def evaluate_session(
     session_id: str = "default",
     include_internal: bool = False,
 ):
-    # -----------------------------------------------------
-    # Knowledge base must contain approved material
-    # -----------------------------------------------------
+
+    # =====================================================
+    # KNOWLEDGE BASE CHECK
+    # =====================================================
 
     if kb_store.count() == 0:
         raise HTTPException(
@@ -587,9 +899,9 @@ async def evaluate_session(
             ),
         )
 
-    # -----------------------------------------------------
-    # Load dialogue
-    # -----------------------------------------------------
+    # =====================================================
+    # LOAD DIALOGUE
+    # =====================================================
 
     turns = sessions.get(
         session_id
@@ -611,17 +923,17 @@ async def evaluate_session(
             ),
         )
 
-    # -----------------------------------------------------
-    # Get selected topic
-    # -----------------------------------------------------
+    # =====================================================
+    # GET TOPIC
+    # =====================================================
 
     context = sessions.get_context(
         session_id
     )
 
-    # -----------------------------------------------------
-    # Evaluate
-    # -----------------------------------------------------
+    # =====================================================
+    # EVALUATE
+    # =====================================================
 
     result = (
         evaluation_service.evaluate(
@@ -634,11 +946,9 @@ async def evaluate_session(
         result.model_dump()
     )
 
-    # -----------------------------------------------------
-    # Public/user-facing evaluation
-    #
-    # Internal numerical scores can be hidden in production.
-    # -----------------------------------------------------
+    # =====================================================
+    # REMOVE INTERNAL NUMERIC SCORES FROM PUBLIC RESULT
+    # =====================================================
 
     if not include_internal:
 
@@ -774,15 +1084,6 @@ class ManualEvaluationRequest(
 async def evaluate_manual(
     request: ManualEvaluationRequest,
 ):
-    """
-    Development endpoint.
-
-    Evaluate a supplied full conversation directly.
-
-    This bypasses the microphone/UI but uses the
-    same claim extraction, RAG, verification,
-    conversation rubric and coaching pipeline.
-    """
 
     from evaluation.models import (
         DialogueTurn,
@@ -797,6 +1098,7 @@ async def evaluate_manual(
         )
 
     try:
+
         turns = [
             DialogueTurn(
                 **turn
@@ -806,6 +1108,7 @@ async def evaluate_manual(
         ]
 
     except Exception as exc:
+
         raise HTTPException(
             status_code=422,
             detail=(
