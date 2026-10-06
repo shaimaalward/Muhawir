@@ -13,7 +13,7 @@ const PERSONAS = [
     id: "adam",
     name: "آدم",
     className: "adam",
-    image: "adam.png",
+    image: "assets/adam.png",
     description:
       "شخصية ودودة وفضولية، تفضّل الأمثلة اليومية والشرح البسيط وتتفاعل بطبيعية دون تحويل الحوار إلى أسئلة متتابعة.",
     tags: [
@@ -27,7 +27,7 @@ const PERSONAS = [
     id: "maya",
     name: "مايا",
     className: "maya",
-    image: "maya.png",
+    image: "assets/maya.png",
     description:
       "شخصية تحليلية ودقيقة، تركّز على المنطق والأدلة وتلاحظ الافتراضات والتناقضات وتطلب توضيحًا عند الحاجة.",
     tags: [
