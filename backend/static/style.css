@@ -2821,3 +2821,898 @@ p {
     max-width: none;
   }
 }
+
+/* =========================================================
+   FINAL POLISH
+   Login + mobile portrait + recommendation card
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. LOGIN PAGE — softer branded background
+   --------------------------------------------------------- */
+
+.auth-screen {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(47, 109, 89, 0.13),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 14% 82%,
+      rgba(184, 141, 69, 0.11),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f8f5ee 0%,
+      #f2f6f2 52%,
+      #f7f1e7 100%
+    );
+}
+
+
+/* Remove the brown edge around the login form */
+
+.auth-card {
+  border: none;
+
+  background:
+    rgba(255, 253, 249, 0.94);
+
+  box-shadow:
+    0 18px 50px rgba(35, 79, 66, 0.09);
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* Remove the old small colored line at the top */
+
+.auth-card-accent {
+  display: none;
+}
+
+
+/* Make inputs feel cleaner too */
+
+.auth-card .text-input {
+  border: 1px solid rgba(47, 109, 89, 0.14);
+
+  background:
+    rgba(255, 255, 255, 0.82);
+}
+
+.auth-card .text-input:focus {
+  border-color: rgba(47, 109, 89, 0.48);
+
+  box-shadow:
+    0 0 0 4px rgba(47, 109, 89, 0.07);
+}
+
+
+
+/* ---------------------------------------------------------
+   2. RECOMMENDATION CARD
+   Simple design — no drawing
+   --------------------------------------------------------- */
+
+.dashboard-hero {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 31px 34px;
+
+  border:
+    1px solid rgba(47, 109, 89, 0.12);
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(184, 141, 69, 0.12),
+      transparent 24%
+    ),
+    linear-gradient(
+      110deg,
+      #fffdf9 0%,
+      #f7faf7 56%,
+      #eaf3ee 100%
+    );
+
+  box-shadow:
+    0 15px 35px rgba(35, 79, 66, 0.06);
+}
+
+
+/* simple decorative glow */
+
+.dashboard-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  left: -65px;
+  bottom: -95px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(47, 109, 89, 0.06);
+
+  pointer-events: none;
+}
+
+
+/* tiny gold detail */
+
+.dashboard-hero::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  right: 34px;
+
+  width: 56px;
+  height: 3px;
+
+  border-radius: 0 0 999px 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--gold),
+      #d5ba7a
+    );
+}
+
+
+.dashboard-hero .mini-label,
+.dashboard-hero h2,
+.dashboard-hero p,
+.dashboard-hero button {
+  position: relative;
+  z-index: 1;
+}
+
+
+.dashboard-hero h2 {
+  margin-top: 7px;
+
+  margin-bottom: 7px;
+
+  font-size:
+    clamp(27px, 3vw, 34px);
+
+  color:
+    var(--ink);
+}
+
+
+.dashboard-hero p {
+  max-width: 650px;
+
+  margin-bottom: 20px;
+
+  color:
+    #65756e;
+}
+
+
+.dashboard-hero .button.primary {
+  box-shadow:
+    0 10px 24px rgba(47, 109, 89, 0.16);
+}
+
+
+
+/* ---------------------------------------------------------
+   3. MOBILE HEADER / LOGO FIX
+   --------------------------------------------------------- */
+
+.mobile-logo-button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+.mobile-account-button {
+  cursor: pointer;
+}
+
+
+
+/* ---------------------------------------------------------
+   TABLET / VERTICAL SCREEN
+   --------------------------------------------------------- */
+
+@media (max-width: 860px) {
+
+  /* Header */
+
+  .mobile-header {
+    height: 68px;
+
+    padding: 7px 16px;
+
+    background:
+      rgba(250, 248, 243, 0.96);
+
+    backdrop-filter: blur(14px);
+  }
+
+
+  .mobile-logo-button {
+    width: 105px;
+    height: 52px;
+  }
+
+
+  .mobile-header .mobile-logo-button img {
+    display: block;
+
+    width: 100px;
+
+    max-width: 100%;
+
+    height: 48px;
+
+    object-fit: contain;
+
+    margin: 0;
+  }
+
+
+  /* Login */
+
+  .auth-screen {
+    min-height: 100svh;
+
+    padding: 30px 22px;
+  }
+
+
+  .auth-shell {
+    width: min(590px, 100%);
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+
+  .auth-brand {
+    min-height: auto;
+
+    transform: none;
+
+    margin-bottom: 0;
+  }
+
+
+  .auth-logo {
+    width: 250px;
+
+    max-width: 68%;
+
+    margin: 0 auto;
+  }
+
+
+  .auth-brand-copy {
+    margin-top: -40px;
+  }
+
+
+  .auth-brand h1 {
+    font-size: 31px;
+  }
+
+
+  .auth-brand p {
+    max-width: 450px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
+  }
+
+
+  .auth-card {
+    width: min(500px, 100%);
+
+    margin: 0 auto;
+
+    padding: 27px 29px;
+
+    border-radius: 24px;
+  }
+
+
+  /* Recommendation */
+
+  .dashboard-hero {
+    padding: 27px 25px;
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------
+   PHONE / NARROW PORTRAIT
+   --------------------------------------------------------- */
+
+@media (max-width: 650px) {
+
+  /* IMPORTANT:
+     previously the entire logo/tagline disappeared here.
+     Keep it visible instead.
+  */
+
+  .auth-brand {
+    display: flex;
+
+    margin-bottom: 2px;
+  }
+
+
+  .auth-screen {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+      24px
+      16px
+      28px;
+  }
+
+
+  .auth-shell {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    max-width: 430px;
+
+    gap: 14px;
+  }
+
+
+  .auth-logo {
+    width: 205px;
+
+    max-width: 68%;
+
+    margin: 0 auto;
+  }
+
+
+  .auth-brand-copy {
+    margin-top: -31px;
+  }
+
+
+  .auth-brand h1 {
+    margin-bottom: 5px;
+
+    font-size: 25px;
+  }
+
+
+  .auth-brand p {
+    max-width: 330px;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+  }
+
+
+  .auth-card {
+    width: 100%;
+
+    padding:
+      24px
+      20px;
+
+    border: none;
+
+    border-radius: 22px;
+
+    box-shadow:
+      0 15px 38px rgba(35, 79, 66, 0.08);
+  }
+
+
+  .auth-card h2 {
+    margin-bottom: 18px;
+
+    font-size: 24px;
+  }
+
+
+  .auth-card .text-input {
+    min-height: 48px;
+  }
+
+
+  /* MOBILE HEADER LOGO */
+
+  .mobile-header {
+    height: 62px;
+
+    padding:
+      6px
+      13px;
+  }
+
+
+  .app-root {
+    padding-top: 62px;
+  }
+
+
+  .mobile-logo-button {
+    width: 88px;
+
+    height: 48px;
+  }
+
+
+  .mobile-header .mobile-logo-button img {
+    width: 86px;
+
+    height: 46px;
+
+    object-fit: contain;
+  }
+
+
+  /* Recommendation card */
+
+  .dashboard-hero {
+    padding:
+      24px
+      21px;
+
+    border-radius: 20px;
+
+    background:
+      radial-gradient(
+        circle at 3% 5%,
+        rgba(184, 141, 69, 0.11),
+        transparent 26%
+      ),
+      linear-gradient(
+        145deg,
+        #fffdf9 0%,
+        #f3f8f5 100%
+      );
+  }
+
+
+  .dashboard-hero::before {
+    width: 125px;
+
+    height: 125px;
+
+    left: -53px;
+
+    bottom: -65px;
+  }
+
+
+  .dashboard-hero::after {
+    right: 21px;
+
+    width: 44px;
+  }
+
+
+  .dashboard-hero h2 {
+    font-size: 27px;
+  }
+
+
+  .dashboard-hero p {
+    margin-bottom: 17px;
+
+    font-size: 13px;
+  }
+
+
+  .dashboard-hero .compact-button {
+    width: 100%;
+  }
+
+}
+
+
+
+/* ---------------------------------------------------------
+   VERY SMALL PHONES
+   --------------------------------------------------------- */
+
+@media (max-width: 390px) {
+
+  .auth-screen {
+    padding:
+      18px
+      13px;
+  }
+
+
+  .auth-logo {
+    width: 180px;
+  }
+
+
+  .auth-brand-copy {
+    margin-top: -28px;
+  }
+
+
+  .auth-brand h1 {
+    font-size: 23px;
+  }
+
+
+  .auth-brand p {
+    font-size: 10.5px;
+  }
+
+
+  .auth-card {
+    padding:
+      21px
+      17px;
+  }
+
+
+  .mobile-logo-button {
+    width: 80px;
+  }
+
+
+  .mobile-header .mobile-logo-button img {
+    width: 78px;
+  }
+
+}
+
+/* =========================================================
+   ACCOUNT PAGE — ONE CLEAN CARD
+   ========================================================= */
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+
+/* Make all 3 sections visually merge into one card */
+
+.account-information,
+.profile-summary,
+.account-actions {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+
+/* The first section becomes the outer card */
+
+.account-information {
+  position: relative;
+
+  padding: 30px 34px 26px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 26px 26px 0 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffdf9 0%,
+      #fbfdfb 55%,
+      #f3f8f5 100%
+    );
+
+  box-shadow:
+    0 18px 42px rgba(35, 79, 66, 0.06);
+}
+
+
+/* Summary continues inside same visual card */
+
+.profile-summary {
+  padding: 26px 34px;
+
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+
+  background:
+    rgba(255, 253, 249, 0.96);
+}
+
+
+/* Actions become the bottom of the same card */
+
+.account-actions {
+  grid-column: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+  padding: 22px 34px 30px;
+
+  margin: 0;
+
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  border-radius: 0 0 26px 26px;
+
+  background:
+    rgba(255, 253, 249, 0.96);
+
+  box-shadow:
+    0 18px 42px rgba(35, 79, 66, 0.06);
+}
+
+
+/* Divider between account and training summary */
+
+.profile-summary {
+  position: relative;
+}
+
+.profile-summary::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  right: 34px;
+  left: 34px;
+
+  height: 1px;
+
+  background:
+    var(--line-soft);
+}
+
+
+/* Slightly cleaner title */
+
+.profile-summary h2 {
+  margin-bottom: 20px;
+}
+
+
+/* Summary stats become softer inner boxes */
+
+.profile-summary-grid {
+  gap: 12px;
+}
+
+.profile-stat {
+  min-height: 110px;
+
+  border:
+    1px solid rgba(47, 109, 89, 0.11);
+
+  background:
+    rgba(248, 251, 249, 0.75);
+
+  box-shadow: none;
+}
+
+
+/* Remove the old colored top borders */
+
+.profile-stat:nth-child(1),
+.profile-stat:nth-child(2),
+.profile-stat:nth-child(3) {
+  border-top:
+    1px solid rgba(47, 109, 89, 0.11);
+}
+
+
+/* Keep the buttons neat */
+
+.account-actions .button {
+  min-height: 48px;
+}
+
+
+/* =========================================================
+   ACCOUNT MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .account-information {
+    padding:
+      24px
+      20px
+      22px;
+
+    border-radius:
+      22px
+      22px
+      0
+      0;
+  }
+
+
+  .profile-summary {
+    padding:
+      22px
+      20px;
+  }
+
+
+  .profile-summary::before {
+    right: 20px;
+    left: 20px;
+  }
+
+
+  .profile-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .account-actions {
+    grid-template-columns: 1fr;
+
+    padding:
+      18px
+      20px
+      24px;
+
+    border-radius:
+      0
+      0
+      22px
+      22px;
+  }
+
+}
+
+/* =========================================================
+   ACCOUNT PAGE — FINAL TEXT + BACKGROUND FIX
+   ========================================================= */
+
+/* Make the upper section match the lower section */
+
+.account-information {
+  background: rgba(255, 253, 249, 0.96);
+}
+
+
+/* Bigger account labels */
+
+.profile-row span {
+  font-size: 15px;
+}
+
+
+/* Bigger account values */
+
+.profile-row strong {
+  font-size: 16px;
+}
+
+
+/* Bigger change-password button */
+
+.password-change-button {
+  font-size: 15px;
+}
+
+
+/* Bigger training summary title */
+
+.profile-summary h2 {
+  font-size: 28px;
+}
+
+
+/* Bigger stat labels */
+
+.profile-stat span {
+  font-size: 13px;
+}
+
+
+/* Bigger stat values */
+
+.profile-stat strong {
+  font-size: 18px;
+}
+
+
+/* Bigger logout/delete buttons */
+
+.account-actions .button {
+  font-size: 15px;
+}
+
+
+/* Slightly bigger main account heading */
+
+.profile-page-head h1 {
+  font-size: 44px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .profile-row span {
+    font-size: 14px;
+  }
+
+  .profile-row strong {
+    font-size: 15px;
+  }
+
+  .profile-summary h2 {
+    font-size: 24px;
+  }
+
+  .profile-stat span {
+    font-size: 12px;
+  }
+
+  .profile-stat strong {
+    font-size: 17px;
+  }
+
+  .account-actions .button,
+  .password-change-button {
+    font-size: 14px;
+  }
+
+  .profile-page-head h1 {
+    font-size: 36px;
+  }
+
+}
