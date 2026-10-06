@@ -1,14 +1,88 @@
+# Secrets / environment
 .env
 .env.*
 !.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache / test cache
 __pycache__/
 *.py[cod]
+*$py.class
 .pytest_cache/
-venv/
-.venv/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local databases
 *.db
 *.sqlite
 *.sqlite3
+
+# Keep the built Muhawir knowledge base in the repository
+!backend/knowledge/data/knowledge.db
+
+# Logs / temporary files
+*.log
+*.tmp
+*.temp
+~$*
+
+# OS / editor files
 .DS_Store
+Thumbs.db
 .vscode/
 .idea/
+
+# Build / packaging artifacts
+build/
+dist/
+*.egg-info/
+# Secrets / environment
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache / test cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Keep the built Muhawir knowledge base in the repository
+!backend/knowledge/data/knowledge.db
+
+# Logs / temporary files
+*.log
+*.tmp
+*.temp
+~$*
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build / packaging artifacts
+build/
+dist/
+*.egg-info/
