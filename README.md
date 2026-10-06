@@ -66,7 +66,7 @@ Muhawir/
     ├── config.py
     ├── session_store.py
     ├── requirements.txt
-    ├── .env.example
+    ├── .env
     ├── evaluation/
     ├── knowledge/
     │   ├── connectors/
