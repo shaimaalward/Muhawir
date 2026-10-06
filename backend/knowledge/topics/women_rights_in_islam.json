@@ -1,0 +1,54 @@
+{
+  "key": "women_rights_in_islam",
+  "title_ar": "حقوق المرأة في الإسلام",
+  "tags": [
+    "حقوق المرأة",
+    "حقوق النساء",
+    "المرأة في الإسلام",
+    "الميراث",
+    "المال",
+    "الزواج",
+    "التعليم",
+    "Women's rights in Islam"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 4,
+      "ayah": 1
+    },
+    {
+      "surah": 4,
+      "ayah": 7
+    },
+    {
+      "surah": 4,
+      "ayah": 19
+    },
+    {
+      "surah": 4,
+      "ayah": 32
+    },
+    {
+      "surah": 9,
+      "ayah": 71
+    },
+    {
+      "surah": 16,
+      "ayah": 97
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/book/7488",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/book/7680",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://www.islamic-content.com/post/1515",
+      "source_type": "dawah"
+    }
+  ]
+}

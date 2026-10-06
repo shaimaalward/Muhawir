@@ -1,0 +1,48 @@
+{
+  "key": "hajj",
+  "title_ar": "الحج",
+  "tags": [
+    "الحج",
+    "المناسك",
+    "الإحرام",
+    "عرفة",
+    "Hajj",
+    "pilgrimage"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 3,
+      "ayah": 97
+    },
+    {
+      "surah": 22,
+      "ayah": 26
+    },
+    {
+      "surah": 22,
+      "ayah": 27
+    },
+    {
+      "surah": 22,
+      "ayah": 28
+    },
+    {
+      "surah": 22,
+      "ayah": 29
+    },
+    {
+      "surah": 2,
+      "ayah": 197
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/book/8966",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/book/8316",
+      "source_type": "dawah"
+    }
+  ]
+}

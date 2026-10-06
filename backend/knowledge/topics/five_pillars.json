@@ -1,0 +1,29 @@
+{
+  "key": "five_pillars",
+  "title_ar": "أركان الإسلام",
+  "tags": [
+    "أركان الإسلام",
+    "الشهادتان",
+    "five pillars"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 43
+    },
+    {
+      "surah": 2,
+      "ayah": 110
+    },
+    {
+      "surah": 2,
+      "ayah": 177
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dorar.net/aqeeda/2604/%D8%A7%D9%84%D9%81%D8%B5%D9%84-%D8%A7%D9%84%D8%A3%D9%88%D9%84-%D8%A3%D8%B1%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85",
+      "source_type": "aqeedah"
+    }
+  ]
+}

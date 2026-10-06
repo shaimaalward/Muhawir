@@ -1,0 +1,40 @@
+{
+  "key": "quran_preservation",
+  "title_ar": "حفظ القرآن وكتابته وجمعه",
+  "tags": [
+    "حفظ القرآن",
+    "جمع القرآن",
+    "كتابة الوحي",
+    "الذكر",
+    "Quran preservation",
+    "collection of Quran"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 15,
+      "ayah": 9
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dorar.net/history/event/150",
+      "source_type": "history",
+      "title": "أبو بكر الصديق رضي الله عنه يأمر بجمع القرآن",
+      "start_marker": "أبو بكر الصديق رضي الله عنه يأمر بجمع القرآن",
+      "stop_markers": [
+        "انظر أيضا",
+        "مواضيع ذات صلة"
+      ]
+    },
+    {
+      "url": "https://dorar.net/history/event/238",
+      "source_type": "history",
+      "title": "جمع القرآن الكريم في مصحف واحد في عهد عثمان بن عفان رضي الله عنه",
+      "start_marker": "جمع القرآن الكريم في مصحف واحد في عهد عثمان بن عفان رضي الله عنه",
+      "stop_markers": [
+        "انظر أيضا",
+        "مواضيع ذات صلة"
+      ]
+    }
+  ]
+}

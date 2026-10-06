@@ -1,0 +1,44 @@
+{
+  "key": "women_in_islam",
+  "title_ar": "المرأة في الإسلام",
+  "tags": [
+    "المرأة في الإسلام",
+    "مكانة المرأة",
+    "تكريم المرأة",
+    "المرأة المسلمة",
+    "Women in Islam",
+    "Muslim women"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 4,
+      "ayah": 1
+    },
+    {
+      "surah": 9,
+      "ayah": 71
+    },
+    {
+      "surah": 16,
+      "ayah": 97
+    },
+    {
+      "surah": 33,
+      "ayah": 35
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/file/9390",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/book/7488",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/book/10654",
+      "source_type": "dawah"
+    }
+  ]
+}

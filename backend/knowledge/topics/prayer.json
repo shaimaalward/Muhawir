@@ -1,0 +1,40 @@
+{
+  "key": "prayer",
+  "title_ar": "الصلاة في الإسلام",
+  "tags": [
+    "الصلاة",
+    "صلاة",
+    "العبادة",
+    "الخشوع",
+    "Prayer",
+    "Salah"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 43
+    },
+    {
+      "surah": 20,
+      "ayah": 14
+    },
+    {
+      "surah": 29,
+      "ayah": 45
+    },
+    {
+      "surah": 4,
+      "ayah": 103
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/file/9084?lang=ar",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/book/7768",
+      "source_type": "dawah"
+    }
+  ]
+}

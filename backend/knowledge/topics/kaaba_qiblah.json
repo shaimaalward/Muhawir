@@ -1,0 +1,43 @@
+{
+  "key": "kaaba_qiblah",
+  "title_ar": "الكعبة والقبلة والعبادة والتوحيد",
+  "tags": [
+    "الكعبة", 
+    "القبلة", 
+    "kaaba", 
+    "qiblah", 
+    "worship"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 144
+    },
+    {
+      "surah": 2,
+      "ayah": 149
+    },
+    {
+      "surah": 2,
+      "ayah": 150
+    },
+    {
+      "surah": 5,
+      "ayah": 97
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dorar.net/tafseer/2/24",
+      "source_type": "tafsir"
+    },
+    {
+      "url": "https://dorar.net/hadith/sharh/64331",
+      "source_type": "hadith"
+    },
+    {
+      "url": "https://dorar.net/aqeeda/2867/%D8%A7%D9%84%D9%81%D8%B1%D8%B9-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB-%D8%A7%D9%84%D8%B7%D9%88%D8%A7%D9%81",
+      "source_type": "aqeedah"
+    }
+  ]
+}

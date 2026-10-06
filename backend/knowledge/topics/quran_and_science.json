@@ -1,0 +1,52 @@
+{
+  "key": "quran_and_science",
+  "title_ar": "القرآن والعلم",
+  "tags": [
+    "القرآن والعلم",
+    "الإعجاز العلمي",
+    "العلم الحديث",
+    "الكون",
+    "Quran and science",
+    "scientific miracles"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 3,
+      "ayah": 190
+    },
+    {
+      "surah": 41,
+      "ayah": 53
+    },
+    {
+      "surah": 88,
+      "ayah": 17
+    },
+    {
+      "surah": 88,
+      "ayah": 18
+    },
+    {
+      "surah": 88,
+      "ayah": 19
+    },
+    {
+      "surah": 88,
+      "ayah": 20
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://www.islamic-content.com/post/25019",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://www.islamic-content.com/post/64724",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://www.islamic-content.com/post/62798",
+      "source_type": "dawah"
+    }
+  ]
+}

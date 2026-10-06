@@ -1,0 +1,41 @@
+{
+  "key": "hijab",
+  "title_ar": "الحجاب",
+  "tags": [
+    "الحجاب",
+    "الستر",
+    "اللباس",
+    "الاحتشام",
+    "المرأة",
+    "Hijab",
+    "modesty"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 24,
+      "ayah": 30
+    },
+    {
+      "surah": 24,
+      "ayah": 31
+    },
+    {
+      "surah": 33,
+      "ayah": 59
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/book/7574",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/file/6012",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://islamic-content.com/post/92840?language=ar",
+      "source_type": "dawah"
+    }
+  ]
+}

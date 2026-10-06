@@ -1,0 +1,37 @@
+{
+  "key": "islam_spread",
+  "title_ar": "هل انتشر الإسلام بالسيف؟",
+  "tags": [
+    "انتشار الإسلام",
+    "السيف",
+    "الفتوحات",
+    "الإكراه في الدين",
+    "التاريخ الإسلامي",
+    "spread of Islam",
+    "spread by the sword"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 256
+    },
+    {
+      "surah": 16,
+      "ayah": 125
+    },
+    {
+      "surah": 10,
+      "ayah": 99
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/file/2507",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/file/1601?lang=ar",
+      "source_type": "dawah"
+    }
+  ]
+}

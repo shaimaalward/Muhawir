@@ -1,0 +1,34 @@
+{
+  "key": "six_pillars_of_faith",
+  "title_ar": "أركان الإيمان الستة",
+  "tags": [
+    "أركان الإيمان",
+    "الإيمان بالله",
+    "الملائكة",
+    "الكتب",
+    "الرسل",
+    "اليوم الآخر",
+    "six pillars of faith",
+    "iman"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 177
+    },
+    {
+      "surah": 2,
+      "ayah": 285
+    },
+    {
+      "surah": 4,
+      "ayah": 136
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dorar.net/hadith/sharh/67971",
+      "source_type": "hadith"
+    }
+  ]
+}

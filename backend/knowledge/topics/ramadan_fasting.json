@@ -1,0 +1,42 @@
+{
+  "key": "ramadan_fasting",
+  "title_ar": "رمضان والصيام",
+  "tags": [
+    "رمضان",
+    "الصيام",
+    "صوم رمضان",
+    "لماذا نصوم",
+    "فوائد الصيام",
+    "Ramadan",
+    "fasting",
+    "sawm"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 183
+    },
+    {
+      "surah": 2,
+      "ayah": 184
+    },
+    {
+      "surah": 2,
+      "ayah": 185
+    },
+    {
+      "surah": 2,
+      "ayah": 187
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/book/7652",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/book/9774",
+      "source_type": "dawah"
+    }
+  ]
+}

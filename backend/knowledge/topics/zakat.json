@@ -1,0 +1,32 @@
+{
+  "key": "zakat",
+  "title_ar": "الزكاة",
+  "tags": [
+    "الزكاة",
+    "زكاة المال",
+    "الصدقة",
+    "مصارف الزكاة",
+    "Zakat",
+    "charity"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 43
+    },
+    {
+      "surah": 9,
+      "ayah": 60
+    },
+    {
+      "surah": 9,
+      "ayah": 103
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/book/7653",
+      "source_type": "dawah"
+    }
+  ]
+}

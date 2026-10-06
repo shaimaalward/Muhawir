@@ -1,0 +1,41 @@
+{
+  "key": "jihad",
+  "title_ar": "الجهاد في الإسلام",
+  "tags": [
+    "الجهاد",
+    "القتال",
+    "الحرب",
+    "السلام",
+    "الدعوة",
+    "Jihad",
+    "war"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 190
+    },
+    {
+      "surah": 22,
+      "ayah": 39
+    },
+    {
+      "surah": 22,
+      "ayah": 40
+    },
+    {
+      "surah": 16,
+      "ayah": 125
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/file/839",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/file/1833?lang=ar",
+      "source_type": "dawah"
+    }
+  ]
+}

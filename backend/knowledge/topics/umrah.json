@@ -1,0 +1,33 @@
+{
+  "key": "umrah",
+  "title_ar": "العمرة",
+  "tags": [
+    "العمرة",
+    "مكة",
+    "الطواف",
+    "السعي",
+    "الصفا والمروة",
+    "الإحرام",
+    "Umrah"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 2,
+      "ayah": 158
+    },
+    {
+      "surah": 2,
+      "ayah": 196
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dawa.center/book/6526",
+      "source_type": "dawah"
+    },
+    {
+      "url": "https://dawa.center/book/8316",
+      "source_type": "dawah"
+    }
+  ]
+}

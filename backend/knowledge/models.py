@@ -60,4 +60,3 @@ class RetrievalResult(BaseModel):
     evidence: list[RetrievedEvidence] = Field(default_factory=list)
     evidence_sufficient: bool = False
     reason: Optional[str] = None
-

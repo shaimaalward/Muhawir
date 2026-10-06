@@ -1,0 +1,42 @@
+{
+  "key": "prophet_muhammad",
+  "title_ar": "محمد صلى الله عليه وسلم",
+  "tags": [
+    "محمد",
+    "النبي محمد",
+    "رسول الله",
+    "خاتم النبيين",
+    "النبوة",
+    "الرسالة",
+    "Muhammad",
+    "Prophet Muhammad"
+  ],
+  "quran_ayahs": [
+    {
+      "surah": 33,
+      "ayah": 40
+    },
+    {
+      "surah": 48,
+      "ayah": 29
+    },
+    {
+      "surah": 7,
+      "ayah": 158
+    },
+    {
+      "surah": 21,
+      "ayah": 107
+    }
+  ],
+  "web_pages": [
+    {
+      "url": "https://dorar.net/aqeeda/1443/%D8%A7%D9%84%D9%85%D8%B7%D9%84%D8%A8-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D8%A7%D9%84%D8%A5%D9%8A%D9%85%D8%A7%D9%86-%D8%A8%D9%85%D8%AD%D9%85%D8%AF-%D8%B5%D9%84%D9%89-%D8%A7%D9%84%D9%84%D9%87-%D8%B9%D9%84%D9%8A%D9%87-%D9%88%D8%B3%D9%84%D9%85",
+      "source_type": "aqeedah"
+    },
+    {
+      "url": "https://dorar.net/aqeeda/348/%D8%A7%D9%84%D9%85%D8%B7%D9%84%D8%A8-%D8%A7%D9%84%D8%A3%D9%88%D9%84-%D9%85%D8%B9%D9%86%D9%89-%D8%B4%D9%87%D8%A7%D8%AF%D8%A9-%D8%A3%D9%86-%D9%85%D8%AD%D9%85%D8%AF%D8%A7-%D8%B1%D8%B3%D9%88%D9%84-%D8%A7%D9%84%D9%84%D9%87",
+      "source_type": "aqeedah"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "key": "dawa_center",
+    "name_ar": "المستودع الدعوي الرقمي",
+    "name_en": "Digital Dawah Repository",
+    "base_url": "https://dawa.center",
+    "domains": [
+      "dawa.center"
+    ],
+    "content_types": [
+      "dawah",
+      "terminology",
+      "qa",
+      "general"
+    ],
+    "priority": 1,
+    "approved": true,
+    "notes": "مرجع شامل للموضوعات والمصطلحات والدعوة بحسب البلدان والأديان واللغات والفئات."
+  },
+  {
+    "key": "islamic_content",
+    "name_ar": "الجمهرة - موسوعة مفردات المحتوى الإسلامي",
+    "name_en": "Islamic Content Encyclopedia",
+    "base_url": "https://islamic-content.com",
+    "domains": [
+      "islamic-content.com",
+      "www.islamic-content.com"
+    ],
+    "content_types": [
+      "dawah",
+      "terminology",
+      "qa",
+      "general"
+    ],
+    "priority": 1,
+    "approved": true,
+    "notes": "مرجع للمحتوى الإسلامي والمفردات والمصطلحات."
+  },
+  {
+    "key": "quranpedia",
+    "name_ar": "الموسوعة القرآنية",
+    "name_en": "Quranpedia",
+    "base_url": "https://quranpedia.net",
+    "domains": [
+      "quranpedia.net",
+      "api.quranpedia.net"
+    ],
+    "content_types": [
+      "quran",
+      "general"
+    ],
+    "priority": 1,
+    "approved": true,
+    "notes": "النص القرآني والمواد المرتبطة به عبر واجهة Quranpedia الرسمية."
+  },
+  {
+    "key": "dorar_tafseer",
+    "name_ar": "الدرر السنية - التفسير",
+    "name_en": "Dorar Tafsir",
+    "base_url": "https://dorar.net/tafseer",
+    "domains": [
+      "dorar.net"
+    ],
+    "content_types": [
+      "tafsir"
+    ],
+    "priority": 1,
+    "approved": true,
+    "notes": "لشرح الآية مع تمييز كلام المفسر عن النص القرآني."
+  },
+  {
+    "key": "dorar_hadith",
+    "name_ar": "الدرر السنية - الحديث",
+    "name_en": "Dorar Hadith",
+    "base_url": "https://dorar.net/hadith",
+    "domains": [
+      "dorar.net"
+    ],
+    "content_types": [
+      "hadith"
+    ],
+    "priority": 1,
+    "approved": true,
+    "notes": "للحديث والتحقق من المصدر والحكم. لا يعتمد حديث بلا مصدر وحكم موثق."
+  },
+  {
+    "key": "dorar_history",
+    "name_ar": "الدرر السنية - الموسوعة التاريخية",
+    "name_en": "Dorar History",
+    "base_url": "https://dorar.net/history",
+    "domains": [
+      "dorar.net"
+    ],
+    "content_types": [
+      "history",
+      "sirah"
+    ],
+    "priority": 1,
+    "approved": true,
+    "notes": "للوقائع التاريخية الثابتة والسيرة وجمع القرآن ونحو ذلك."
+  },
+  {
+    "key": "shamela",
+    "name_ar": "المكتبة الشاملة",
+    "name_en": "Shamela",
+    "base_url": "https://shamela.ws",
+    "domains": [
+      "shamela.ws"
+    ],
+    "content_types": [
+      "hadith",
+      "tafsir",
+      "aqeedah",
+      "fiqh",
+      "sirah",
+      "general"
+    ],
+    "priority": 2,
+    "approved": true,
+    "notes": "مصدر للطبعات المعتمدة من كتب التراث والسنة."
+  },
+  {
+    "key": "dorar_aqeeda",
+    "name_ar": "الدرر السنية - العقيدة",
+    "name_en": "Dorar Aqeedah",
+    "base_url": "https://dorar.net/aqeeda",
+    "domains": [
+      "dorar.net"
+    ],
+    "content_types": [
+      "aqeedah"
+    ],
+    "priority": 1,
+    "approved": true,
+    "notes": "مرجع للعقيدة والتعريف بالإسلام."
+  }
+]
