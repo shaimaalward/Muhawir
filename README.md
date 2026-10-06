@@ -25,8 +25,7 @@ Muhawir is designed as a **training and evaluation tool**, not as an independent
 
 - Natural AI dialogue practice
 - Arabic-focused Islamic knowledge base
-- Retrieval-Augmented Generation (RAG)
-- Hybrid lexical + semantic retrieval
+- Retrieval-Augmented Generation (RAG
 - Evidence-based claim verification
 - Topic-based knowledge organization
 - End-of-conversation evaluation
