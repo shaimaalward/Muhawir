@@ -116,15 +116,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-### 4. Configure environment variables
-
-Copy `.env.example` to `.env` and add your API key:
-
-```env
-OPENAI_API_KEY=your_openai_api_key_here
-```
-
-### 5. Run the application
+### 4. Run the application
 
 ```bash
 python -m uvicorn main:app --reload
