@@ -60,6 +60,7 @@ backend/knowledge/data/knowledge.db
 Muhawir/
 ├── README.md
 ├── LICENSE
+├── Dockerfile
 ├── .gitignore
 └── backend/
     ├── main.py
@@ -88,7 +89,7 @@ Muhawir/
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone https://github.com/shaimaalward/Muhawir.git
 cd Muhawir/backend
 ```
 
