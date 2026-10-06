@@ -180,3 +180,8 @@ Religious claims are evaluated against retrieved evidence rather than treated as
 - Prefer caution when evidence is insufficient.
 - Do not provide independent personalized fatwas.
 - Keep internal numeric evaluation scores separate from learner-facing coaching where appropriate.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
+
