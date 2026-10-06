@@ -1,73 +1,1274 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2f6d59" />
 
-    <meta charset="UTF-8">
+  <title>مُحاوِر</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>مُحاوِر</title>
-
-    <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 
 <body>
 
-<div class="container">
+  <!-- ======================================================
+       SPLASH
+       ====================================================== -->
 
-    <h1>مُحاوِر</h1>
+  <section id="splashScreen" class="splash-screen">
 
-    <p class="subtitle">
-        تدرّب قبل أن تُحاور
-    </p>
+    <div class="splash-content">
 
+      <img
+        src="muhawir-logo.png"
+        alt="مُحاوِر"
+        class="splash-logo"
+      />
 
-    <div class="person">
-
-        <div class="avatar">
-            👤
-        </div>
-
-        <h2>آدم</h2>
-
-        <p>
-            شخص فضولي يريد أن يتعرّف أكثر على الإسلام
-        </p>
-
-    </div>
-
-
-    <div id="conversation">
-
-        <div class="adam-message">
-            مرحباً! لدي بعض الأسئلة التي كنت دائماً
-            أريد أن أسأل عنها حول الإسلام.
-        </div>
+      <div class="splash-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
     </div>
 
-
-    <button id="micButton">
-
-        🎙️
-        <span id="buttonText">
-            اضغط للتحدث
-        </span>
-
-    </button>
+  </section>
 
 
-    <p id="status"></p>
+  <!-- ======================================================
+       LOGIN
+       ====================================================== -->
 
-</div>
+  <section id="authScreen" class="auth-screen hidden">
+
+    <div class="auth-shell">
+
+      <div class="auth-brand">
+
+        <img
+          src="muhawir-logo.png"
+          alt="مُحاوِر"
+          class="auth-logo"
+        />
+
+        <div class="auth-brand-copy">
+
+          <h1>
+            تدرّب قبل أن تُحاور.
+          </h1>
+
+          <p>
+            محادثات صوتية تدريبية، تحقق معرفي،
+            وملاحظات مختصرة تساعدك على التطور.
+          </p>
+
+        </div>
+
+      </div>
 
 
-<script src="app.js"></script>
+      <form id="signInForm" class="auth-card card">
+
+        <div class="auth-card-accent"></div>
+
+        <h2>
+          مرحبًا بك
+        </h2>
+
+
+        <label class="field-label" for="nameInput">
+          الاسم
+        </label>
+
+        <input
+          id="nameInput"
+          class="text-input"
+          type="text"
+          autocomplete="name"
+          required
+          maxlength="40"
+        />
+
+
+        <label class="field-label" for="emailInput">
+          البريد الإلكتروني
+        </label>
+
+        <input
+          id="emailInput"
+          class="text-input"
+          type="email"
+          autocomplete="email"
+          required
+          maxlength="80"
+        />
+
+
+        <label class="field-label" for="passwordInput">
+          كلمة المرور
+        </label>
+
+        <div class="password-field">
+
+          <input
+            id="passwordInput"
+            class="text-input"
+            type="password"
+            autocomplete="current-password"
+            required
+            minlength="6"
+          />
+
+          <button
+            id="togglePasswordButton"
+            class="password-toggle"
+            type="button"
+          >
+            إظهار
+          </button>
+
+        </div>
+
+
+        <button
+          class="button primary wide auth-submit"
+          type="submit"
+        >
+          دخول
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       APPLICATION
+       ====================================================== -->
+
+  <div id="appRoot" class="app-root hidden">
+
+
+    <!-- ====================================================
+         SIDEBAR
+         ==================================================== -->
+
+    <aside class="sidebar">
+
+      <div>
+
+        <button
+          class="sidebar-logo-button"
+          data-route="dashboard"
+          aria-label="الرئيسية"
+        >
+          <img
+            src="muhawir-logo.png"
+            alt="مُحاوِر"
+            class="sidebar-logo"
+          />
+        </button>
+
+
+        <nav class="side-nav">
+
+          <button
+            class="nav-item active"
+            data-route="dashboard"
+          >
+
+            <svg viewBox="0 0 24 24">
+              <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+              <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+              <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+              <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+            </svg>
+
+            <span>
+              الرئيسية
+            </span>
+
+          </button>
+
+
+          <button
+            class="nav-item"
+            data-route="training"
+          >
+
+            <svg viewBox="0 0 24 24">
+              <path d="M4 5.5h16v10H9l-5 4v-14Z"></path>
+              <path d="M8 9h8M8 12h5"></path>
+            </svg>
+
+            <span>
+              التدريب
+            </span>
+
+          </button>
+
+
+          <button
+            class="nav-item"
+            data-route="history"
+          >
+
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="8"></circle>
+              <path d="M12 8v4l3 2"></path>
+            </svg>
+
+            <span>
+              السجل
+            </span>
+
+          </button>
+
+
+          <button
+            class="nav-item"
+            data-route="profile"
+          >
+
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 20c.6-4 3-6 7-6s6.4 2 7 6"></path>
+            </svg>
+
+            <span>
+              الحساب
+            </span>
+
+          </button>
+
+        </nav>
+
+      </div>
+
+
+      <button
+        class="sidebar-user"
+        data-route="profile"
+      >
+
+        <div class="sidebar-user-icon"></div>
+
+        <div>
+
+          <strong id="sidebarName">
+            مستخدم مُحاوِر
+          </strong>
+
+          <span>
+            الحساب
+          </span>
+
+        </div>
+
+      </button>
+
+    </aside>
+
+
+    <!-- ====================================================
+         MOBILE HEADER
+         ==================================================== -->
+
+    <header class="mobile-header">
+
+      <button
+        class="mobile-logo-button"
+        data-route="dashboard"
+      >
+
+        <img
+          src="muhawir-logo.png"
+          alt="مُحاوِر"
+        />
+
+      </button>
+
+      <button
+        class="mobile-account-button"
+        data-route="profile"
+      >
+        الحساب
+      </button>
+
+    </header>
+
+
+    <!-- ====================================================
+         MAIN
+         ==================================================== -->
+
+    <main class="main-area">
+
+
+      <!-- ==================================================
+           DASHBOARD
+           ================================================== -->
+
+      <section
+        id="dashboardPage"
+        class="page active-page"
+      >
+
+        <div class="page-head dashboard-head">
+
+          <span class="eyebrow">
+            ملفك التدريبي
+          </span>
+
+          <h1 id="dashboardGreeting">
+            مرحبًا
+          </h1>
+
+          <p>
+            ملخص مهاراتك واقتراح التدريب التالي.
+          </p>
+
+        </div>
+
+
+        <section class="dashboard-hero card">
+
+          <span class="mini-label">
+            الاقتراح التالي
+          </span>
+
+          <h2 id="recommendationTitle">
+            الكعبة والقبلة
+          </h2>
+
+          <p id="recommendationText">
+            حوار حول معنى القبلة والكعبة.
+          </p>
+
+          <button
+            id="recommendationButton"
+            class="button primary compact-button"
+            type="button"
+          >
+            ابدأ هذا الموضوع
+          </button>
+
+        </section>
+
+
+        <div class="section-title-row">
+
+          <div>
+
+            <h2>
+              مهاراتك
+            </h2>
+
+            <p>
+              تُحدّث المؤشرات بعد كل جلسة مكتملة.
+            </p>
+
+          </div>
+
+          <span
+            id="sessionsCountLabel"
+            class="soft-chip"
+          >
+            لا توجد جلسات بعد
+          </span>
+
+        </div>
+
+
+        <section
+          id="dashboardSkills"
+          class="skills-dashboard"
+        ></section>
+
+
+        <div class="dashboard-grid">
+
+          <section class="card insight-card">
+
+            <h3>
+              نقاط قوتك
+            </h3>
+
+            <div
+              id="strengthInsight"
+              class="insight-content"
+            >
+              أكمل أول جلسة ليظهر هنا وصف لنقطة قوتك.
+            </div>
+
+          </section>
+
+
+          <section class="card insight-card">
+
+            <h3>
+              ركّز هنا
+            </h3>
+
+            <div
+              id="focusInsight"
+              class="insight-content"
+            >
+              بعد أول تقييم سنحدد المهارة التي تحتاج إلى تركيز أكبر.
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <section class="history-cta card">
+
+          <div>
+
+            <h3>
+              جلساتك السابقة
+            </h3>
+
+            <p>
+              يمكنك مراجعة المحادثات السابقة
+              والتغذية الراجعة من السجل.
+            </p>
+
+          </div>
+
+          <button
+            class="button secondary"
+            data-route="history"
+          >
+            عرض السجل
+          </button>
+
+        </section>
+
+      </section>
+
+
+      <!-- ==================================================
+           TRAINING
+           ================================================== -->
+
+      <section
+        id="trainingPage"
+        class="page"
+      >
+
+        <div class="page-head centered-page-head">
+
+          <span class="eyebrow">
+            التدريب
+          </span>
+
+          <h1>
+            اختر الشخصية التي تريد التدرب معها
+          </h1>
+
+          <p>
+            كل شخصية تتفاعل بطريقة مختلفة.
+            بعد الاختيار ستحدد موضوع المحادثة.
+          </p>
+
+        </div>
+
+
+        <section
+          id="personaGrid"
+          class="persona-grid"
+        ></section>
+
+      </section>
+
+
+      <!-- ==================================================
+           PERSONA / TOPICS
+           ================================================== -->
+
+      <section
+        id="personaPage"
+        class="page"
+      >
+
+        <button
+          class="back-link"
+          data-route="training"
+        >
+          العودة للشخصيات
+        </button>
+
+
+        <section
+          id="personaHero"
+          class="persona-hero card"
+        ></section>
+
+
+        <div class="section-title-row">
+
+          <div>
+
+            <h2>
+              اختر موضوع المحادثة
+            </h2>
+
+            <p>
+              اختر موضوعًا لبدء الجلسة.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <section
+          id="topicGroups"
+          class="topic-groups"
+        ></section>
+
+      </section>
+
+
+      <!-- ==================================================
+           CONVERSATION
+           ================================================== -->
+
+      <section
+        id="conversationPage"
+        class="page"
+      >
+
+        <div class="conversation-topbar">
+
+          <div class="conversation-identity">
+
+            <div
+              id="conversationPersonaIcon"
+              class="persona-avatar avatar-small"
+            ></div>
+
+            <div>
+
+              <span
+                id="conversationPersonaName"
+                class="mini-label"
+              >
+                آدم
+              </span>
+
+              <h1 id="conversationTopicTitle">
+                الكعبة والقبلة
+              </h1>
+
+            </div>
+
+          </div>
+
+
+          <div class="conversation-top-actions">
+
+            <span
+              id="sessionTimer"
+              class="timer"
+            >
+              00:00
+            </span>
+
+            <button
+              id="exitButton"
+              class="button ghost-danger"
+              type="button"
+            >
+              خروج
+            </button>
+
+            <button
+              id="finishButton"
+              class="button primary"
+              type="button"
+            >
+              إنهاء وتقييم
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="conversation-layout">
+
+          <section class="conversation-stage card">
+
+            <div
+              id="conversationThread"
+              class="conversation-thread"
+            ></div>
+
+
+            <div class="voice-console">
+
+              <div
+                id="voiceState"
+                class="voice-state"
+              >
+
+                <div class="waveform">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div>
+
+                  <strong id="voiceStateTitle">
+                    جاهز للاستماع
+                  </strong>
+
+                  <p id="voiceStateText">
+                    اضغط على الميكروفون وابدأ إجابتك.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <button
+                id="micButton"
+                class="mic-button"
+                type="button"
+              >
+
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-5a3.5 3.5 0 1 0-7 0v5A3.5 3.5 0 0 0 12 15Zm-5.5-3.5h-2A7.5 7.5 0 0 0 11 19v2H8v2h8v-2h-3v-2a7.5 7.5 0 0 0 6.5-7.5h-2a5.5 5.5 0 0 1-11 0Z"
+                  />
+                </svg>
+
+                <span id="micButtonText">
+                  اضغط للتحدث
+                </span>
+
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <aside class="conversation-side card">
+
+            <span class="mini-label">
+              ملاحظة تدريبية
+            </span>
+
+            <h3 id="conversationGuidanceTitle">
+              ابدأ بجواب مباشر
+            </h3>
+
+            <p id="conversationGuidanceText">
+              تحدث بطبيعتك واشرح الفكرة بوضوح.
+            </p>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           FEEDBACK
+           ================================================== -->
+
+      <section
+        id="feedbackPage"
+        class="page"
+      >
+
+        <div
+          id="evaluationLoading"
+          class="evaluation-loading card hidden"
+        >
+
+          <div class="evaluation-loader">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <h2>
+            نراجع جلستك
+          </h2>
+
+          <p>
+            نراجع المعلومات والحوار والأداء.
+          </p>
+
+        </div>
+
+
+        <div
+          id="evaluationError"
+          class="error-state card hidden"
+        >
+
+          <h2>
+            تعذر إنشاء التقييم
+          </h2>
+
+          <p id="evaluationErrorText"></p>
+
+          <button
+            class="button secondary"
+            data-route="conversation"
+          >
+            العودة
+          </button>
+
+        </div>
+
+
+        <div
+          id="evaluationContent"
+          class="hidden"
+        >
+
+          <div class="feedback-head">
+
+            <div>
+
+              <span class="eyebrow">
+                نتيجة الجلسة
+              </span>
+
+              <h1>
+                ملاحظاتك جاهزة
+              </h1>
+
+              <p id="feedbackMeta"></p>
+
+            </div>
+
+            <button
+              id="feedbackHomeButton"
+              class="button ghost"
+              type="button"
+            >
+              الرئيسية
+            </button>
+
+          </div>
+
+
+          <section class="diagnosis-hero card">
+
+            <span class="mini-label">
+              ملخص الأداة
+            </span>
+
+            <h2 id="diagnosisHeadline"></h2>
+
+            <p id="diagnosisText"></p>
+
+          </section>
+
+
+          <section
+            id="criticalErrorCard"
+            class="critical-card hidden"
+          >
+
+            <strong>
+              تنبيه معرفي
+            </strong>
+
+            <p id="criticalErrorText"></p>
+
+          </section>
+
+
+          <section class="session-skills-card card">
+
+            <h2>
+              مهارات هذه الجلسة
+            </h2>
+
+            <div
+              id="feedbackSkills"
+              class="feedback-skills"
+            ></div>
+
+          </section>
+
+
+          <div class="feedback-grid">
+
+            <section class="feedback-list-card card">
+
+              <h3>
+                ما أتقنته
+              </h3>
+
+              <ul
+                id="strengthsList"
+                class="clean-list"
+              ></ul>
+
+            </section>
+
+
+            <section class="feedback-list-card card">
+
+              <h3>
+                ما يحتاج إلى تحسين
+              </h3>
+
+              <ul
+                id="improvementsList"
+                class="clean-list"
+              ></ul>
+
+            </section>
+
+          </div>
+
+
+          <section class="sources-section card">
+
+            <h2>
+              مصادر مرتبطة بالموضوع
+            </h2>
+
+            <div
+              id="sourcesList"
+              class="sources-grid"
+            ></div>
+
+          </section>
+
+
+          <section class="next-attempt card">
+
+            <span class="mini-label">
+              المحاولة القادمة
+            </span>
+
+            <p id="nextAttemptText"></p>
+
+          </section>
+
+
+          <div class="feedback-actions">
+
+            <button
+              id="retryButton"
+              class="button secondary"
+              type="button"
+            >
+              إعادة نفس التدريب
+            </button>
+
+            <button
+              id="newTrainingButton"
+              class="button primary"
+              type="button"
+            >
+              تدريب جديد
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           HISTORY
+           ================================================== -->
+
+      <section
+        id="historyPage"
+        class="page"
+      >
+
+        <div class="page-head">
+
+          <span class="eyebrow">
+            السجل
+          </span>
+
+          <h1>
+            جلساتك السابقة
+          </h1>
+
+          <p>
+            راجع محادثاتك السابقة وملاحظات كل جلسة.
+          </p>
+
+        </div>
+
+
+        <section
+          id="historyList"
+          class="history-list"
+        ></section>
+
+      </section>
+
+
+      <!-- ==================================================
+           HISTORY DETAIL
+           ================================================== -->
+
+      <section
+        id="sessionDetailPage"
+        class="page"
+      >
+
+        <button
+          class="back-link"
+          data-route="history"
+        >
+          العودة للسجل
+        </button>
+
+
+        <div
+          id="historyDetailHeader"
+          class="history-detail-head"
+        ></div>
+
+
+        <div class="history-detail-grid">
+
+          <section class="transcript-card card">
+
+            <h2>
+              نص المحادثة
+            </h2>
+
+            <div
+              id="historyTranscript"
+              class="history-transcript"
+            ></div>
+
+          </section>
+
+
+          <section class="history-feedback-column">
+
+            <div class="history-summary card">
+
+              <span class="mini-label">
+                ملخص الأداة
+              </span>
+
+              <p id="historySummary"></p>
+
+            </div>
+
+
+            <div class="history-skill-card card">
+
+              <h3>
+                مهاراتك في هذه الجلسة
+              </h3>
+
+              <div
+                id="historySkillSnapshot"
+                class="history-skill-snapshot"
+              ></div>
+
+            </div>
+
+
+            <div class="compact-feedback-card card">
+
+              <h3>
+                نقاط القوة
+              </h3>
+
+              <ul
+                id="historyStrengths"
+                class="clean-list"
+              ></ul>
+
+            </div>
+
+
+            <div class="compact-feedback-card card">
+
+              <h3>
+                التحسين التالي
+              </h3>
+
+              <ul
+                id="historyImprovements"
+                class="clean-list"
+              ></ul>
+
+            </div>
+
+
+            <button
+              id="historyRetryButton"
+              class="button primary wide"
+              type="button"
+            >
+              إعادة هذا التدريب
+            </button>
+
+          </section>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           ACCOUNT
+           ================================================== -->
+
+      <section
+        id="profilePage"
+        class="page profile-page"
+      >
+
+        <div class="profile-page-head">
+
+          <span class="eyebrow">
+            الحساب
+          </span>
+
+          <h1>
+            الحساب
+          </h1>
+
+        </div>
+
+
+        <div class="profile-grid">
+
+          <section class="account-information card">
+
+            <div class="profile-row">
+
+              <span>
+                الاسم
+              </span>
+
+              <strong id="profileDisplayName">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="profile-row">
+
+              <span>
+                البريد الإلكتروني
+              </span>
+
+              <strong id="profileEmailText">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="profile-row">
+
+              <span>
+                كلمة المرور
+              </span>
+
+              <strong class="password-mask">
+                ••••••••
+              </strong>
+
+            </div>
+
+
+            <button
+              id="changePasswordButton"
+              class="button secondary password-change-button"
+              type="button"
+            >
+              تغيير كلمة المرور
+            </button>
+
+
+            <div
+              id="changePasswordPanel"
+              class="change-password-panel hidden"
+            >
+
+              <input
+                id="newPasswordInput"
+                class="text-input"
+                type="password"
+                placeholder="كلمة المرور الجديدة"
+              />
+
+              <input
+                id="confirmPasswordInput"
+                class="text-input"
+                type="password"
+                placeholder="تأكيد كلمة المرور"
+              />
+
+              <button
+                id="savePasswordButton"
+                class="button primary"
+                type="button"
+              >
+                حفظ
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <section class="profile-summary card">
+
+            <h2>
+              ملخص التدريب
+            </h2>
+
+
+            <div class="profile-summary-grid">
+
+              <div class="profile-stat">
+
+                <span>
+                  عدد الجلسات
+                </span>
+
+                <strong id="profileSessionsCount">
+                  0
+                </strong>
+
+              </div>
+
+
+              <div class="profile-stat">
+
+                <span>
+                  أقوى مهارة
+                </span>
+
+                <strong id="profileStrongestSkill">
+                  —
+                </strong>
+
+              </div>
+
+
+              <div class="profile-stat">
+
+                <span>
+                  آخر تدريب
+                </span>
+
+                <strong id="profileLastSession">
+                  —
+                </strong>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <section class="account-actions card">
+
+            <button
+              id="signOutButton"
+              class="button secondary wide"
+              type="button"
+            >
+              تسجيل الخروج
+            </button>
+
+
+            <button
+              id="deleteAccountButton"
+              class="button danger-outline wide"
+              type="button"
+            >
+              حذف الحساب
+            </button>
+
+          </section>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- ====================================================
+         MOBILE NAV
+         ==================================================== -->
+
+    <nav class="mobile-nav">
+
+      <button
+        class="mobile-nav-item active"
+        data-route="dashboard"
+      >
+        الرئيسية
+      </button>
+
+      <button
+        class="mobile-nav-item"
+        data-route="training"
+      >
+        التدريب
+      </button>
+
+      <button
+        class="mobile-nav-item"
+        data-route="history"
+      >
+        السجل
+      </button>
+
+      <button
+        class="mobile-nav-item"
+        data-route="profile"
+      >
+        الحساب
+      </button>
+
+    </nav>
+
+  </div>
+
+
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+
+  <script src="app.js"></script>
 
 </body>
 
